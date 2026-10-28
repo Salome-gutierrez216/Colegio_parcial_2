@@ -62,4 +62,13 @@ public class ControladorRegistroTest {
         assertFalse(ok);
         assertTrue(control.getProfesores().isEmpty());
     }
+
+    @Test
+    public void testHorasEnCero() {
+        boolean ok = control.registrarProfesor("Tomás Rey", "Calle 2", "310", new Fecha(5, 5, 1990),
+                "7788", "Música", 15000, 0);
+
+        assertFalse(ok);
+        assertTrue(control.getMensaje().contains("mayores que cero"));
+    }
 }
