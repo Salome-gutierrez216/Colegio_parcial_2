@@ -71,4 +71,22 @@ public class ControladorRegistroTest {
         assertFalse(ok);
         assertTrue(control.getMensaje().contains("mayores que cero"));
     }
+
+    // Tres profesores con 100 horas: salarios de 1.300.000, 2.600.000 y 1.950.000
+    private void registrarTresProfesores() {
+        control.registrarProfesor("Ana", "Calle 1", "311", new Fecha(1, 1, 1985), "1", "Inglés", 10000, 100);
+        control.registrarProfesor("Bruno", "Calle 2", "312", new Fecha(2, 2, 1980), "2", "Física", 20000, 100);
+        control.registrarProfesor("Carla", "Calle 3", "313", new Fecha(3, 3, 1990), "3", "Historia", 15000, 100);
+    }
+
+    @Test
+    public void testProfesoresDeMayorAMenorSalario() {
+        registrarTresProfesores();
+        String reporte = control.reporteProfesores();
+
+        int bruno = reporte.indexOf("Bruno");
+        int carla = reporte.indexOf("Carla");
+        int ana = reporte.indexOf("Ana");
+        assertTrue(bruno < carla && carla < ana);
+    }
 }
