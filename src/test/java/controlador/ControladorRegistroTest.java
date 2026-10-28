@@ -43,4 +43,13 @@ public class ControladorRegistroTest {
         assertTrue(control.getEstudiantes().isEmpty());
         assertTrue(control.getMensaje().contains("vacíos"));
     }
+
+    @Test
+    public void testFechaDeNacimientoFutura() {
+        // Hoy es 28/10/2026, el 29/10/2026 todavía no ha llegado
+        boolean ok = control.registrarEstudiante("Valeria", "Cra 3", "300", new Fecha(29, 10, 2026), "A-15", "8B");
+
+        assertFalse(ok);
+        assertTrue(control.getMensaje().contains("futura"));
+    }
 }
