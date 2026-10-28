@@ -26,4 +26,10 @@ public class ProfesorTest {
         // Sobrecarga: 15.000 x 60 = 900.000 y con el 30% queda en 1.170.000
         assertEquals(1170000, profe.calcularSalario(60), 0.01);
     }
+
+    @Test
+    public void testPrestacionesSociales() {
+        // 19% de 2.340.000 = 444.600
+        assertEquals(444600, profe.calcularPrestaciones(), 0.01);
+    }
 }
