@@ -34,4 +34,13 @@ public class ControladorRegistroTest {
         assertEquals(1, control.getEstudiantes().size());
         assertTrue(control.getMensaje().contains("A-15"));
     }
+
+    @Test
+    public void testCamposVacios() {
+        boolean ok = control.registrarEstudiante("Valeria", "   ", "300", new Fecha(12, 4, 2012), "A-15", "8B");
+
+        assertFalse(ok);
+        assertTrue(control.getEstudiantes().isEmpty());
+        assertTrue(control.getMensaje().contains("vacíos"));
+    }
 }
