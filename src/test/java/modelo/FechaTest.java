@@ -17,4 +17,14 @@ public class FechaTest {
         assertTrue(new Fecha(29, 2, 2024).esValida());  // 2024 es bisiesto
         assertFalse(new Fecha(29, 2, 2023).esValida()); // 2023 no
     }
+
+    @Test
+    public void testCualFechaVaPrimero() {
+        Fecha antes = new Fecha(15, 6, 2026);
+        Fecha despues = new Fecha(16, 6, 2026);
+
+        assertTrue(despues.esPosteriorA(antes));
+        assertFalse(antes.esPosteriorA(despues));
+        assertFalse(antes.esPosteriorA(new Fecha(15, 6, 2026))); // misma fecha
+    }
 }
