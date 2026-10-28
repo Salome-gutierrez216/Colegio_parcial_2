@@ -97,4 +97,10 @@ public class ControladorRegistroTest {
         assertEquals(1111500, control.totalPrestaciones(), 0.01);
         assertTrue(control.reporteProfesores().contains("1111500"));
     }
+
+    @Test
+    public void testReportesSinRegistros() {
+        assertTrue(control.reporteEstudiantes().contains("ningún estudiante"));
+        assertTrue(control.reporteProfesores().contains("ningún profesor"));
+    }
 }
