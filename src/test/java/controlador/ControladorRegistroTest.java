@@ -52,4 +52,14 @@ public class ControladorRegistroTest {
         assertFalse(ok);
         assertTrue(control.getMensaje().contains("futura"));
     }
+
+    @Test
+    public void testProfesorDebeSerMayorDeEdad() {
+        // Nacido el 29/10/2008: le falta un día para cumplir 18
+        boolean ok = control.registrarProfesor("Tomás Rey", "Calle 2", "310", new Fecha(29, 10, 2008),
+                "7788", "Música", 15000, 40);
+
+        assertFalse(ok);
+        assertTrue(control.getProfesores().isEmpty());
+    }
 }
