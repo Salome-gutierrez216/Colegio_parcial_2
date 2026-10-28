@@ -32,4 +32,15 @@ public class ProfesorTest {
         // 19% de 2.340.000 = 444.600
         assertEquals(444600, profe.calcularPrestaciones(), 0.01);
     }
+
+    @Test
+    public void testImprimirMuestraSalarioYPrestaciones() {
+        Persona p = profe; // se guarda como Persona pero imprime como Profesor
+        String texto = p.imprimir();
+
+        assertTrue(texto.contains("4455"));
+        assertTrue(texto.contains("Química"));
+        assertTrue(texto.contains("2340000"));
+        assertTrue(texto.contains("444600"));
+    }
 }
