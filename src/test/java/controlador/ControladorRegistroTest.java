@@ -89,4 +89,12 @@ public class ControladorRegistroTest {
         int ana = reporte.indexOf("Ana");
         assertTrue(bruno < carla && carla < ana);
     }
+
+    @Test
+    public void testTotalDePrestaciones() {
+        registrarTresProfesores();
+        // 19% de (1.300.000 + 2.600.000 + 1.950.000) = 1.111.500
+        assertEquals(1111500, control.totalPrestaciones(), 0.01);
+        assertTrue(control.reporteProfesores().contains("1111500"));
+    }
 }
