@@ -24,4 +24,14 @@ public class ControladorRegistroTest {
         assertEquals(1, control.getEstudiantes().size());
         assertEquals("Valeria Ortiz", control.buscarEstudiante("A-15").getNombre());
     }
+
+    @Test
+    public void testNoRepiteCodigoDeEstudiante() {
+        control.registrarEstudiante("Valeria", "Cra 3", "300", new Fecha(12, 4, 2012), "A-15", "8B");
+        boolean ok = control.registrarEstudiante("Mateo", "Cra 7", "301", new Fecha(2, 2, 2013), "A-15", "7A");
+
+        assertFalse(ok);
+        assertEquals(1, control.getEstudiantes().size());
+        assertTrue(control.getMensaje().contains("A-15"));
+    }
 }
