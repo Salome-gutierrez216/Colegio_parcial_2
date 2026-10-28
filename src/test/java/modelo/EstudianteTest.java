@@ -15,4 +15,14 @@ public class EstudianteTest {
         assertEquals(13, e.calcularEdad(new Fecha(11, 4, 2026))); // un día antes del cumpleaños
         assertEquals(14, e.calcularEdad(new Fecha(12, 4, 2026))); // el día del cumpleaños
     }
+
+    @Test
+    public void testImprimirMuestraLosDatosDelEstudiante() {
+        Persona p = crear(); // se guarda como Persona pero imprime como Estudiante
+        String texto = p.imprimir();
+
+        assertTrue(texto.contains("A-15"));
+        assertTrue(texto.contains("Valeria Ortiz"));
+        assertTrue(texto.contains("8B"));
+    }
 }
